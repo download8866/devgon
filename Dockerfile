@@ -24,4 +24,14 @@
 # CMD ["go", "run", "main.go"]
 # CMD ["./main"]
 FROM golang:latest
+
 WORKDIR /app
+EXPOSE 8080
+
+COPY ./ /app
+RUN go mod download
+RUN go install -mod=mod github.com/githubnemo/CompileDaemon
+# RUN go get github.com/githubnemo/CompileDaemon
+
+# ENTRYPOINT go run main.go
+ENTRYPOINT CompileDaemon --build="go build main.go" --command=./main

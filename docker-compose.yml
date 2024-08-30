@@ -5,7 +5,7 @@
   #   build: .
   #   container_name: gin-app
   #   ports:
-  #     - "8080:8080"
+  #     - "80:8080"
   #   networks:
   #     - app-network
 
@@ -32,3 +32,12 @@
 # networks:
 #   app-network:
 #     driver: bridge
+
+version: "3"
+services:
+  docker-go:
+    build:  ./
+    ports:
+      - "80:8080"
+    volumes:
+      - D:\docker-projects\devgon:/app

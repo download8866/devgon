@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	// "github.com/go-redis/redis/v9"
 )
@@ -18,6 +20,7 @@ func main() {
 	// })
 
 	r.GET("/", func(c *gin.Context) {
+		fmt.Println("Service start. from path home ")
 		// err := rdb.Set(ctx, "key", "value", 0).Err()
 		// if err != nil {
 		// 	log.Fatalf("Failed to connect to Redis: %v", err)
@@ -33,7 +36,7 @@ func main() {
 		// 	"redis_value": val,
 		// })
 		c.JSON(200, gin.H{
-			"message": "the redis not support",
+			"message": "the redis not support , hot reloading. update5 ",
 		})
 	})
 
@@ -43,5 +46,6 @@ func main() {
 		})
 	})
 
+	fmt.Println("Service start.")
 	r.Run(":8080") // 在8080端口启动Gin服务器
 }
